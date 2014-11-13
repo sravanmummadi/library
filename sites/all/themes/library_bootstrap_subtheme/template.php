@@ -34,3 +34,12 @@ function library_bootstrap_subtheme_preprocess_node(&$vars, $hook) {
 	 }
 }
 
+function library_bootstrap_subtheme_preprocess_views_view(&$vars) {
+  $view = $vars['view'];
+  if($view->name == 'home_page_variations' && $view->current_display == 'page_1') {
+    $options = array(
+        'group' => JS_THEME,
+      );
+      drupal_add_js(drupal_get_path('theme', 'library_bootstrap_subtheme'). '/js/scripts-var1.js', $options);
+  }
+}
